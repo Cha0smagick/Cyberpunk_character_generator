@@ -221,10 +221,20 @@ profesiones_cotidianas = [
     "Justiciero",
     "Punk",
     "Thrasher",
+    "skinhead neonazi",
+    "Skinhead comunista",
+    "yonki | drogadicto",
+    "Dealer de drogas ciberneticas",
+    "Dealer de drogas analogas",
     "skater",
     "Malabarista",
     "Acrobata",
-    "Vampiro"
+    "Vampiro",
+    "Policia",
+    "detective",
+    "profesor",
+    "ocultista",
+    "Granjero"
 ]
 
 
@@ -1053,7 +1063,7 @@ chat.append({"question": contenido, "answer": ""})
 contenido_filtrado = "\n".join([linea for linea in contenido.splitlines() if not linea.strip().startswith("Entrevistador:")])
 
 # Obtener respuesta del modelo
-respuesta_bot = obtener_respuesta("lee la informacion que te dare a continuacion y al principio genera un SOLO parrafo con toda la siguiente informacion de seguido: nombre del personaje, el sexo. Si el personaje no tiene sexo o genero definido, debe tener caracteristicas de glitch en la cara, ser un robot o tener una mascara en la cara y no se debe saber si tinee caracteristicas de hombre o mujer. puede ser otro tipo de ser com un adroide o un synth o un ser androgino si el personaje no tiene sexo definido. tambien debe tener un color de piel, la descripcion fisica minuciosa de la cara, los ojos y sus color y forma, su boca y su gesto y la forma de sus orejas y si tinee mascara o no y una descripcion del cuerpo del personaje con detalles unicos que debes inventar al azar segun el background y los stats del personaje, tambien describiendo el traje del personaje segun su profesion, todo esto de manera obligatoria. esto debe ir en un unico parrafo empezando el output, y debe contener tambien la ocupacion y las habilidades y defectos del personaje en ese parrafo unico. Se especifico con esa informacion y formateala de manera que el primer parrafo sea un prompt para una IA que genera arte. Inmediatamente despues del principio, debes generar la informacion general inlcuyendo nombre, edad, profesion, raza alineación y faccion relacionada y las estadisticas de una hoja de rol de un personaje cyberpunk. Eso debe hacerse siguiendo este formato: Nombre:  Genero: Raza: Edad  Profesión:  Alineación moral: Facción: Background (unico y mínimo 500 palabras): Stats del personaje medibles de 1 a 20. Habilidades del personaje (mínimo 10 habilidades medibles de 1 a 20). Hechizos del personaje (mínimo 5 hechizos medibles de 1 a 20). Habilidades (5 talentos, 5 técnicas y 5 conocimientos relevantes). Ventajas (5 disciplinas, 5 trasfondos y 5 virtudes) todo esto debe ser medible de 1 a 20. Genera toda esta información y no sugieras añadir informacion, sino añadela tu, inventatela al azar si es necesario,exportando todo tras el primer parrafo generado en un formato de hoja de personaje de juego de rol que debes optimizar a partir de la informacion que te proporciono y debes hacerlo inventando caracteristicas medibles del 1 al 20 a partir de la informacion imputada a continuacion:  \n\n" + contenido_filtrado, chat)
+respuesta_bot = obtener_respuesta("lee la informacion que te dare a continuacion y al principio genera un SOLO parrafo con toda la siguiente informacion de seguido: nombre del personaje, el sexo. El personaje puede ser hombre, mujer o no tener genero definido. deja eso al azar. el personaje debe tener caracteristicas de glitch en la cara, e implantes de robot. El personaje quiza podría tener una mascara en la cara de ser necesario pero en la mayoria de casos no. puede ser otro tipo de ser com un adroide o un synth o un ser androgino si el personaje no tiene sexo definido. tambien debe tener un color de piel, la descripcion fisica minuciosa de la cara, los ojos y sus color y forma, su boca y su gesto y la forma de sus orejas y si tinee mascara o no y una descripcion del cuerpo del personaje con detalles unicos que debes inventar al azar segun el background y los stats del personaje, tambien describiendo el traje del personaje segun su profesion, todo esto de manera obligatoria. esto debe ir en un unico parrafo empezando el output, y debe contener tambien la ocupacion y las habilidades y defectos del personaje en ese parrafo unico. Se especifico con esa informacion y formateala de manera que el primer parrafo sea un prompt para una IA que genera arte. Inmediatamente despues del principio, debes generar la informacion general inlcuyendo nombre, edad, profesion, raza alineación y faccion relacionada y las estadisticas de una hoja de rol de un personaje cyberpunk. Eso debe hacerse siguiendo este formato: Nombre:  Genero: Raza: Edad  Profesión:  Alineación moral: Facción: Background (unico y mínimo 500 palabras): Stats del personaje medibles de 1 a 20. Habilidades del personaje (mínimo 10 habilidades medibles de 1 a 20). Hechizos del personaje (mínimo 5 hechizos medibles de 1 a 20). Habilidades (5 talentos, 5 técnicas y 5 conocimientos relevantes). Ventajas (5 disciplinas, 5 trasfondos y 5 virtudes) todo esto debe ser medible de 1 a 20. Genera toda esta información y no sugieras añadir informacion, sino añadela tu, inventatela al azar si es necesario,exportando todo tras el primer parrafo generado en un formato de hoja de personaje de juego de rol que debes optimizar a partir de la informacion que te proporciono y debes hacerlo inventando caracteristicas medibles del 1 al 20 a partir de la informacion imputada a continuacion:  \n\n" + contenido_filtrado, chat)
 # Imprimir la respuesta formateada en la consola
 respuesta_bot_legible = codecs.decode(respuesta_bot, 'unicode_escape')
 print("Bot:", respuesta_bot_legible)
