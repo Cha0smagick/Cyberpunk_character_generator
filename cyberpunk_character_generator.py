@@ -963,7 +963,7 @@ def escribir_info_en_archivo(nombre, apellido, sexo, profesion, lugar_magico, tr
         archivo.write(f"Sexo del personaje: {sexo} ")
         archivo.write(f"Profesión del personaje: {profesion} ")
         archivo.write(f"{nombre} {apellido}, {generar_historia_lugar(lugar_magico)} {generar_historia_apellido(apellido)} ")
-        archivo.write(f"Desde una su infancia en las calles fue {transfondo_infancia} y recibió una {tipo_crianza} que moldeó su carácter de manera ruda. ")
+        archivo.write(f"Desde una su infancia en las calles fue {transfondo_infancia} y recibió una {tipo_crianza} que moldeó su carácter de acuerdo a ese evento. ")
         archivo.write(f"Posee experiencia porque el {generar_historia_profesion(profesion)} y ha jurado {proposito_vida}. ")
         archivo.write("Stats del personaje: ")
         nombres_stats = ["Fuerza", "Destreza", "Constitución", "Inteligencia", "Sabiduría", "Carisma"]
@@ -1028,7 +1028,7 @@ chat.append({"question": contenido, "answer": ""})
 contenido_filtrado = "\n".join([linea for linea in contenido.splitlines() if not linea.strip().startswith("Entrevistador:")])
 
 # Obtener respuesta del modelo
-respuesta_bot = obtener_respuesta("Crea un personaje cyberpunk completo siguiendo este formato: Comienza con una descripción física detallada del personaje. Luego, crea una hoja de personaje con la siguiente información: Nombre:  Sexo: Raza (elige entre humano, elfo, semielfo, orco, ghoul, synth, database, IA, Bestial o Clonomorfo): Edad  Profesión: Nivel de fealdad (un número del 1 al 20, donde 1 es muy feo y 20 es bastante bello, elige un número al azar y descríbelo): Color de piel (inventa uno):  Alineación moral: Descripción física y facial detallada con características únicas: Facción: Background (unico y mínimo 500 palabras): Stats del personaje. Habilidades del personaje (mínimo 10 habilidades medibles de 1 a 20). Hechizos del personaje (mínimo 5 hechizos medibles de 1 a 20). Habilidades (5 talentos, 5 técnicas y 5 conocimientos relevantes). Ventajas (5 disciplinas, 5 trasfondos y 5 virtudes). Genera toda esta información en un formato de hoja de personaje de juego de rol a partir de la informacion que te proporciono a continuación: . \n\n" + contenido_filtrado, chat)
+respuesta_bot = obtener_respuesta("Al principio genera un parrafo con el nombre, el sexo, la descripcion fisica minuciosa de cara del personaje obligatoria de primeras y completa y la ocupacion del personaje. Se especifico con esa informacion y formateala de manera que el primer parrafo sea un prompt para una IA que genera arte. Crea un personaje cyberpunk completo siguiendo este formato: Comienza con una descripción física detallada del personaje. Luego, crea una hoja de personaje con la siguiente información: Nombre:  Sexo: Raza (elige entre humano (25% de probabilidad), elfo (10% probabilidad), semielfo (15% probabilidad), orco(10% de probabilidad), ghoul(10% de probabilidad), synth (5% de probabilidad), database (5% de probabilidad), IA (2,5% de probabilidad), Bestial (2,5% de probabilidad) o Clonomorfo (10% de probabilidad )): Edad  Profesión: Nivel de fealdad (un número del 1 al 20, donde 1 es muy feo y 20 es bastante bello, elige un número al azar y descríbelo): Color de piel (inventa uno):  Alineación moral: Descripción física y facial detallada con características únicas: Facción: Background (unico y mínimo 500 palabras): Stats del personaje. Habilidades del personaje (mínimo 10 habilidades medibles de 1 a 20). Hechizos del personaje (mínimo 5 hechizos medibles de 1 a 20). Habilidades (5 talentos, 5 técnicas y 5 conocimientos relevantes). Ventajas (5 disciplinas, 5 trasfondos y 5 virtudes). Genera toda esta información en un formato de hoja de personaje de juego de rol a partir de la informacion que te proporciono a continuación: . \n\n" + contenido_filtrado, chat)
 # Imprimir la respuesta formateada en la consola
 respuesta_bot_legible = codecs.decode(respuesta_bot, 'unicode_escape')
 print("Bot:", respuesta_bot_legible)
@@ -1051,7 +1051,7 @@ async def main():
         output_folder = os.path.dirname(os.path.abspath(txt_file_path))  # Obtiene la carpeta del archivo .txt
 
         for i in range(5):
-            resp = await getattr(freeGPT, "pollinations").Generation().create(prompt) #prodia, pollinations #prodia #pollinations
+            resp = await getattr(freeGPT, "prodia").Generation().create(prompt) #prodia, pollinations #prodia #pollinations
             image = Image.open(BytesIO(resp))
             image.show()
             
